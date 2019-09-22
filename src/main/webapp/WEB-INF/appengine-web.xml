@@ -2,11 +2,11 @@
     <service>budget-backend</service>
     <threadsafe>true</threadsafe>
     <runtime>java8</runtime>
-<!--    <automatic-scaling>-->
-<!--        <min-instances>0</min-instances>-->
-<!--        <max-instances>1</max-instances>-->
-<!--    </automatic-scaling>-->
-    <manual-scaling>
-        <instances>1</instances>
-    </manual-scaling>
+    <automatic-scaling>
+        <min-instances>0</min-instances>
+        <max-instances>1</max-instances>
+    </automatic-scaling>
+<!--    <manual-scaling>-->
+<!--        <instances>1</instances>-->
+<!--    </manual-scaling>-->
 </appengine-web-app>

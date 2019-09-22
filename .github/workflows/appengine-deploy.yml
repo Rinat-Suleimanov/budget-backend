@@ -1,13 +1,15 @@
-name: Appengine Deployment
+name: Deployment
 
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
-  setupGoogleCloud:
-    name: Setup Google Cloud
+  runTests:
+    name: Run unit tests
+  deployToAppengine:
+    name: Deploy to appengine
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -15,13 +17,9 @@ jobs:
         uses: actions/gcloud/auth@master
         env:
           GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Build and deploy with Maven
-      run: mvn clean package appengine:deploy --file pom.xml
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build and deploy with Maven
+        run: mvn clean package appengine:deploy --file pom.xml

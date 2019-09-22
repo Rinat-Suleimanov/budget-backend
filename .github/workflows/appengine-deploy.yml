@@ -1,12 +1,12 @@
 name: Appengine Deployment
 
 on:
-  pull_request:
+  push:
     branches:
     - master
 
 jobs:
-  test:
+  deploy:
 
     runs-on: ubuntu-latest
 
@@ -16,5 +16,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build with Maven
-      run: mvn clean test --file pom.xml
+    - name: Build and deploy with Maven
+      run: mvn clean package appengine:deploy --file pom.xml

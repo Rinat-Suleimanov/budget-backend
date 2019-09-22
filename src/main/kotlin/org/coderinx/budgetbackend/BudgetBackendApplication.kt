@@ -10,12 +10,3 @@ class BudgetBackendApplication
 fun main(args: Array<String>) {
     runApplication<BudgetBackendApplication>(*args)
 }
-
-@RestController
-class Controller {
-
-    @GetMapping
-    fun hello(): String {
-        return "Hello!"
-    }
-}
